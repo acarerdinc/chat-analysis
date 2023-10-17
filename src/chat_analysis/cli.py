@@ -4,8 +4,8 @@ import yaml
 import os
 from tqdm import tqdm
 from contextlib import redirect_stdout
-from intent_classification import IntentClassification
-from sentiment_classification import SentimentClassification
+from .intent_classification import IntentClassification
+from .sentiment_classification import SentimentClassification
 
 def read_config():
     """Read the configuration from config.yaml."""
@@ -25,8 +25,33 @@ def read_chat_json(file_path):
     with open(file_path) as json_file:
         data = json.load(json_file)
         return data
+    
+def print_file_contents(filename):
+    """
+    Prints the contents of a file.
 
-if __name__ == "__main__":
+    Parameters:
+        filename (str): The name of the file to be printed.
+
+    Returns:
+        None
+    """
+    with open(filename, 'r') as file:
+        contents = file.read()
+        print(contents)
+
+    
+def main():
+    """
+    The main function that runs the Chat Analysis CLI tool.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
+
     # Load the defaults from config.yaml
     defaults = read_config()
 
@@ -55,7 +80,7 @@ if __name__ == "__main__":
     print('Chat analysis is starting...')
     
     # Open the output file in write mode
-    with open('output.txt', 'w') as file, redirect_stdout(file):
+    with open(args.output_file, 'w') as file, redirect_stdout(file):
         # Process the chat
         for conversation in tqdm(chat["conversation"]):
             role = conversation["role"]
@@ -78,4 +103,8 @@ if __name__ == "__main__":
 
             print('\n')
 
-    print('You can check out the output file for results.')
+    print('You can check out the output file for results.\n')
+    print_file_contents(args.output_file)
+
+if __name__ == "__main__":
+    main()
