@@ -1,6 +1,16 @@
-# chat-analysis
+# Zero Shot Chat Analysis
 
-This is a github repository for classification of sentiment and intent of a customer response in a conversation between a customer and a representative.
+This is a GitHub repository for the classification of sentiment and intent of customer response in a conversation between a customer and a representative.
+
+## Example Outputs
+
+Example Customer Response: "I've had some bad experiences with phone warranties before. What does AppleCare+ actually cover?"  
+
+When we query the Sentiment Analysis Classifier we get the following probability distribution:
+![Sentiment](visualization/sentiment_classification.png)  
+
+When we query the Intent Classifier we get the following probability distribution:
+![Sentiment](visualization/intent_classification.png)  
 
 ## Installation
 
