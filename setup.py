@@ -11,6 +11,9 @@ setup(
         ],
     },
     install_requires=[
-        # List your dependencies here
+        'transformers',
+        'tensorflow',
+        'numpy',
+        'PyYAML',
     ],
 )

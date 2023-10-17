@@ -5,11 +5,11 @@ class SentimentClassification():
     SentimentClassification class.
     """
 
-    def __init__(self):
+    def __init__(self, model):
         """
         Initializes a new instance of the class.
         """
-        self.classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+        self.classifier = pipeline('zero-shot-classification', model=model)
         self.candidate_labels = ['Positive', 'Negative', 'Neutral']
 
     def classify(self, text):
