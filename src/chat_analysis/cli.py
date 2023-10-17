@@ -95,7 +95,7 @@ def main():
             conversation['intent_score'] = i_score
 
     # Logging the completion message
-    logger.info('You can check out the output file for results.\n')
+    logger.info('Output file created successfully. You can check out the output file for results. Output file path: {}\n'.format(args.output_file))
     
     # Write the results to the output file
     with open(args.output_file, 'w') as outfile:
