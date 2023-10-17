@@ -14,6 +14,7 @@ setup(
         'transformers',
         'tensorflow',
         'numpy',
+        'tqdm',
         'PyYAML',
     ],
 )

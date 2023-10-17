@@ -2,6 +2,8 @@ import json
 import argparse
 import yaml
 import os
+from tqdm import tqdm
+from contextlib import redirect_stdout
 from intent_classification import IntentClassification
 from sentiment_classification import SentimentClassification
 
@@ -35,6 +37,9 @@ if __name__ == "__main__":
     parser.add_argument('--input_file', type=str, default=defaults.get('input_file', 'data.txt'),
                         help=f'Path to the input file (default: {defaults.get("input_file", "data.txt")})')
     
+    parser.add_argument('--output_file', type=str, default=defaults.get('output_file', 'output.txt'),
+                        help=f'Path to the input file (default: {defaults.get("output_file", "output.txt")})')
+    
     parser.add_argument('--model', type=str, default=defaults.get('model', 'facebook/bart-large-mnli'),
                         help=f'The model for zero-shot classification (default: {defaults.get("model", "facebook/bart-large-mnli")})')
 
@@ -46,25 +51,31 @@ if __name__ == "__main__":
     # Initialize the classifiers
     intent_classification = IntentClassification(model=args.model)
     sentiment_classification = SentimentClassification(model=args.model)
+
+    print('Chat analysis is starting...')
     
-    # Process the chat
-    for conversation in chat["conversation"]:
-        role = conversation["role"]
-        message = conversation["message"]
-        
-        # print the role and message
-        print('[{}]'.format(role.upper()))
-        print(message)
+    # Open the output file in write mode
+    with open('output.txt', 'w') as file, redirect_stdout(file):
+        # Process the chat
+        for conversation in tqdm(chat["conversation"]):
+            role = conversation["role"]
+            message = conversation["message"]
+            
+            # print the role and message
+            print('[{}]'.format(role.upper()))
+            print(message)
 
-        if role == "customer":
-            # classify the sentiment of the message
-            sentiment, s_score = sentiment_classification.classify(message)
+            if role == "customer":
+                # classify the sentiment of the message
+                sentiment, s_score = sentiment_classification.classify(message)
 
-            # classify the intent of the message
-            intent, i_score = intent_classification.classify(message)
+                # classify the intent of the message
+                intent, i_score = intent_classification.classify(message)
 
-            # print the results
-            print('-Sentiment: {} ({:.2f}%)'.format(sentiment, s_score*100))
-            print('-Intent: {} ({:.2f}%)'.format(intent, i_score*100))
+                # print the results
+                print('-Sentiment: {} ({:.2f}%)'.format(sentiment, s_score*100))
+                print('-Intent: {} ({:.2f}%)'.format(intent, i_score*100))
 
-        print('\n')
+            print('\n')
+
+    print('You can check out the output file for results.')

@@ -1,0 +1,126 @@
+[CUSTOMER]
+Hi, I was interested in buying the iPhone 14. Can you provide more information about it?
+-Sentiment: Positive (56.71%)
+-Intent: Information Seeking (38.79%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+Of course! The iPhone 14 comes with a new A16 chip, enhanced camera features, and a longer battery life compared to its predecessors. Which capacity and color are you interested in?
+
+
+[CUSTOMER]
+I'm thinking about the 256GB model in Pacific Blue. Are there any promotions or discounts available?
+-Sentiment: Positive (70.13%)
+-Intent: Information Seeking (32.21%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+Currently, we have a trade-in offer where you can get up to $200 off when you trade in an eligible older iPhone model. Apart from that, there are no other promotions at the moment.
+
+
+[CUSTOMER]
+That's a bit disappointing. My old phone is an Android, so I guess I won't be benefiting from that offer.
+-Sentiment: Negative (91.57%)
+-Intent: Expressing Concern (53.15%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+I understand. While the trade-in is specific to iPhones, we do offer financing options if you're interested in breaking down the payment over time.
+
+
+[CUSTOMER]
+That sounds helpful. What's the interest rate for the financing?
+-Sentiment: Positive (76.74%)
+-Intent: Mentioning Previous Experience (28.92%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+We have a 0% APR offer for the first 12 months if you qualify based on credit approval. After that, it would be a standard rate, which varies depending on your credit score.
+
+
+[CUSTOMER]
+Okay, not too bad. How's the camera on the iPhone 14? I've heard mixed reviews.
+-Sentiment: Neutral (44.46%)
+-Intent: Mentioning Previous Experience (47.77%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+The iPhone 14 boasts an improved camera system with better low-light performance and more advanced image stabilization. However, as with any product, opinions can vary. We suggest trying it out in-store to see if it meets your expectations.
+
+
+[CUSTOMER]
+That's fair. I'm just concerned about the price. It's quite high compared to some Android models out there.
+-Sentiment: Positive (47.80%)
+-Intent: Expressing Concern (75.18%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+Absolutely, the iPhone tends to be on the pricier side. However, many users find the ecosystem, build quality, and software updates worth the investment. It's all about what you value in a phone.
+
+
+[CUSTOMER]
+I've heard about the ProMotion display technology. Does the iPhone 14 have that?
+-Sentiment: Positive (46.65%)
+-Intent: Mentioning Previous Experience (54.87%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+The ProMotion technology, which offers a 120Hz refresh rate, is available on the iPhone 14 Pro and Pro Max models. The standard iPhone 14 does not have this feature.
+
+
+[CUSTOMER]
+Ah, that's a bummer. I was really hoping to experience that smoother display.
+-Sentiment: Negative (83.17%)
+-Intent: Expressing Concern (49.59%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+If that's a key feature for you, you might want to consider the iPhone 14 Pro. It's a bit more expensive, but it includes the ProMotion technology among other premium features.
+
+
+[CUSTOMER]
+I'll think about it. How long is the warranty?
+-Sentiment: Positive (42.65%)
+-Intent: Expressing Concern (42.66%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+The iPhone 14 comes with a standard one-year limited warranty. You also have the option to purchase AppleCare+ for extended coverage and benefits.
+
+
+[CUSTOMER]
+I've had some bad experiences with phone warranties before. What does AppleCare+ actually cover?
+-Sentiment: Negative (73.51%)
+-Intent: Mentioning Previous Experience (63.95%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+AppleCare+ extends your warranty to two years and provides up to two incidents of accidental damage protection every 12 months, each subject to a service fee. It also includes 24/7 priority access to Apple experts for any questions or issues.
+
+
+[CUSTOMER]
+That sounds comprehensive. Lastly, if I decide to purchase today, how soon can I expect the delivery?
+-Sentiment: Positive (60.88%)
+-Intent: Expressing Concern (41.74%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+If you order today, you can expect delivery within 3-5 business days. We also offer expedited shipping options if you need it sooner.
+
+
+[CUSTOMER]
+Thanks for all the information. I need some time to think and compare with other options before making a decision.
+-Sentiment: Positive (43.12%)
+-Intent: Gratitude (40.75%)
+
+
+[CUSTOMER_REPRESENTATIVE]
+Of course, take your time. If you have any other questions in the future, feel free to reach out. Have a great day!
+
+
+[CUSTOMER]
+You too! Thanks for the help.
+-Sentiment: Positive (74.24%)
+-Intent: Gratitude (58.88%)
+
+
