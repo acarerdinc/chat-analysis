@@ -2,10 +2,14 @@ import json
 import argparse
 import yaml
 import os
-from tqdm import tqdm
+import logging
 from contextlib import redirect_stdout
 from .intent_classification import IntentClassification
 from .sentiment_classification import SentimentClassification
+
+# Configure the logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def read_config():
     """Read the configuration from config.yaml."""
@@ -25,21 +29,6 @@ def read_chat_json(file_path):
     with open(file_path) as json_file:
         data = json.load(json_file)
         return data
-    
-def print_file_contents(filename):
-    """
-    Prints the contents of a file.
-
-    Parameters:
-        filename (str): The name of the file to be printed.
-
-    Returns:
-        None
-    """
-    with open(filename, 'r') as file:
-        contents = file.read()
-        print(contents)
-
     
 def main():
     """
@@ -77,34 +66,41 @@ def main():
     intent_classification = IntentClassification(model=args.model)
     sentiment_classification = SentimentClassification(model=args.model)
 
-    print('Chat analysis is starting...')
+    logger.info('Chat analysis is starting...')
     
-    # Open the output file in write mode
-    with open(args.output_file, 'w') as file, redirect_stdout(file):
-        # Process the chat
-        for conversation in tqdm(chat["conversation"]):
-            role = conversation["role"]
-            message = conversation["message"]
-            
-            # print the role and message
-            print('[{}]'.format(role.upper()))
-            print(message)
+    # Process the chat
+    for conversation in chat["conversation"]:
+        role = conversation["role"]
+        message = conversation["message"]
 
-            if role == "customer":
-                # classify the sentiment of the message
-                sentiment, s_score = sentiment_classification.classify(message)
+        # Logging the role and message
+        logger.info('[{}]'.format(role.upper()))
+        logger.info(message)
 
-                # classify the intent of the message
-                intent, i_score = intent_classification.classify(message)
+        if role == "customer":
+            # classify the sentiment of the message
+            sentiment, s_score = sentiment_classification.classify(message)
 
-                # print the results
-                print('-Sentiment: {} ({:.2f}%)'.format(sentiment, s_score*100))
-                print('-Intent: {} ({:.2f}%)'.format(intent, i_score*100))
+            # classify the intent of the message
+            intent, i_score = intent_classification.classify(message)
 
-            print('\n')
+            # Logging the results
+            logger.info('-Sentiment: {} ({:.2f}%)'.format(sentiment, s_score*100))
+            logger.info('-Intent: {} ({:.2f}%)'.format(intent, i_score*100))
 
-    print('You can check out the output file for results.\n')
-    print_file_contents(args.output_file)
+            # Set the json output
+            conversation['sentiment'] = sentiment
+            conversation['sentiment_score'] = s_score
+            conversation['intent'] = intent
+            conversation['intent_score'] = i_score
+
+    # Logging the completion message
+    logger.info('You can check out the output file for results.\n')
+    
+    # Write the results to the output file
+    with open(args.output_file, 'w') as outfile:
+        json.dump(chat, outfile, indent=4)
+
 
 if __name__ == "__main__":
     main()
