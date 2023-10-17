@@ -1,4 +1,4 @@
-# chat-analysis
+# Zero Shot Chat Analysis
 
 This is a github repository for classification of sentiment and intent of a customer response in a conversation between a customer and a representative.
 
