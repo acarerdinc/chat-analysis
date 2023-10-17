@@ -34,6 +34,9 @@ if __name__ == "__main__":
     # Add the arguments
     parser.add_argument('--input_file', type=str, default=defaults.get('input_file', 'data.txt'),
                         help=f'Path to the input file (default: {defaults.get("input_file", "data.txt")})')
+    
+    parser.add_argument('--model', type=str, default=defaults.get('model', 'facebook/bart-large-mnli'),
+                        help=f'The model for zero-shot classification (default: {defaults.get("model", "facebook/bart-large-mnli")})')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -41,8 +44,8 @@ if __name__ == "__main__":
     chat = read_chat_json(args.input_file)
 
     # Initialize the classifiers
-    intent_classification = IntentClassification(model='facebook/bart-large-mnli')
-    sentiment_classification = SentimentClassification(model='facebook/bart-large-mnli')
+    intent_classification = IntentClassification(model=args.model)
+    sentiment_classification = SentimentClassification(model=args.model)
     
     # Process the chat
     for conversation in chat["conversation"]:
