@@ -57,5 +57,5 @@ chat-analysis --help
 You can specify the chat log file path as a command line input argument as such.
 
 ```
-chat-analysis --input-file=data/sample-data-2.json
+chat-analysis --input_file=data/sample-data-2.json
 ```
