@@ -1,0 +1,11 @@
+Tartışma Soruları: Burada implementasyon beklenmiyor.
+1)       Zero-Shot kullanmanın avantajları ve dezavantajları nelerdir? Bu sistemi nasıl Türkçe hale getirebiliriz? Önerileriniz nelerdir? 
+2)       Speech-To-Text dönüşüm yapan bir API ve transkriptleri yayınlayan bir gRPC sistemi olduğunu varsayalım. Bu sistemi dinleyen ve transkript üzerine duygu ve niyet analizi yapmak içinsizin paketinizi kullanan ve sonucu yayınlayan bir diğer gRPC sistemi düşünün. Böyle bir sistemin ne gibi sorunları olabilir? Nelere dikkat etmek gerekir?
+
+
+
+[CEVAPLAR]
+
+1)	Zero-shot learning, task specific bir görev için özel training gerektirmeden veriyi sınıflandırma avantajı sunar, bu da özellikle etiketli verinin nadir olduğu durumlarda esnek ve cost-effectivedir. Ancak, her zaman geleneksel supervised yöntemler kadar doğru olmayabilir ve belirsiz kategorilerle problem yaşayabilirler. Türkçe'ye uyarlamak için, mBERT veya XLM-R gibi multilingual modelleri kullanmak ve Türkçe ipuçları sağlamak gereklidir. Türkçe veri üzerinde fine tuning yapmak doğruluğu daha da artırabilir.
+
+2)	Gerçek zamanlı duygu ve niyet analizi için bir Speech-To-Text API'sini gRPC sistemleriyle entegre etmek, gecikme, konuşma dönüşüm hataları nedeniyle doğruluk farklılıkları ve yüksek trafikte potansiyel veri kaybı veya sistem aşırı yüklenmeleri gibi zorluklarla karşılaşabilir. Bu tarz bir sistemde anında müşteriye dönebilmek çok önemlidir. Bu nedenle bu önemli bir dezavantaj olarak karşımıza çıkar. Düşük gecikme süresi, doğru dönüşüm ve ölçeklenebilirlik sağlamak önemlidir. Bir kuyruk mekanizması, izleme araçları ve bir feedback loop uygulanması, sistem güvenilirliğini ve performansını artırırken veri güvenliğini sağlayabilir.

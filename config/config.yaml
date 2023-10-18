@@ -1,0 +1,3 @@
+input_file: data/sample-data-2.json
+model: 'facebook/bart-large-mnli'
+output_file: output.json
