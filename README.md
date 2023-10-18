@@ -59,3 +59,7 @@ You can specify the chat log file path as a command line input argument as such.
 ```
 chat-analysis --input_file=data/sample-data-2.json
 ```
+
+## Discussion
+
+For discussion questions see discussion.txt
